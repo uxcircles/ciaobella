@@ -30,6 +30,7 @@ index.html     首頁：主廚特餐、完整菜單（含素食篩選）、鋼�
 cantina.html   完整酒單：依顏色、產區、預算篩選
 styles.css     全站樣式
 main.js        互動：營業狀態、菜單篩選與目錄、鋼琴、照片燈箱、酒單篩選、手機底部列
+assets/press/  媒體報導 logo（Time Out、Evening Standard、Harden’s、The Observer、The Independent、olive、The Irish Times）
 assets/img/    照片（WebP，每張 640 寬與大圖兩種）、og.jpg 分享圖、badge.webp（原本的偉士牌女郎標誌）
 favicon.svg, apple-touch-icon.png, robots.txt
 _redirects     舊網址轉址（Netlify / Cloudflare Pages）
@@ -73,4 +74,5 @@ python3 -m http.server 5173
 - [ ] 聖誕休假：最後營業 2026/12/23，2027/1/4 重新開門（來自官網公告圖）。
 - [ ] 鋼琴吧介紹裡的曲目（Dean Martin、Modugno、Paolo Conte）是示意文案，請換成鋼琴師實際常彈的。
 - [ ] 照片多是 2014–2016 年拍的，解析度只有 1000px 左右；若正式採用，建議重拍菜色與店內（尤其是遮陽棚和霓虹燈）。
-- [ ] 媒體報導清單取自官網 Press 頁的剪報檔名，請確認刊物名稱。
+- [ ] 媒體報導清單取自官網 Press 頁的剪報檔名。logo 取自各刊物官網／Wikipedia，網站上統一轉成單色。Zagat、Business Traveller、Londra Sera 這次抓不到可用的 logo，先拿掉了；若店家有檔案可再補回（`index.html` 的 `.clippings`）。
+- [ ] 刊物 logo 是各家商標，用在「曾報導」區塊屬一般用法，正式上線前請店家確認報導屬實。

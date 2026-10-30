@@ -216,10 +216,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .clippings { border-block: 1px solid var(--line); background: var(--paper); }
 .clippings .wrap { display: flex; align-items: center; gap: 24px; padding-block: 18px; }
 .clippings h2 { flex-shrink: 0; font: 600 11px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
-.clippings ul { display: flex; flex-wrap: wrap; gap: 6px 26px; align-items: baseline; }
-.clippings li { font-family: var(--f-display); font-size: 19px; color: var(--ink); white-space: nowrap; }
-.clippings li:nth-child(odd) { font-style: italic; }
-@media (max-width: 760px) { .clippings .wrap { flex-direction: column; align-items: flex-start; gap: 12px; } .clippings li { font-size: 16px; } }
+.clippings ul { flex: 1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 14px; }
+.clippings li { display: flex; align-items: center; }
+/* every masthead in one ink colour, so the strip reads as a single line of clippings */
+.clippings img { height: var(--h); width: auto; max-width: none; filter: brightness(0); opacity: .78; transition: opacity .2s; }
+.clippings li:hover img { opacity: 1; }
+@media (max-width: 1200px) {
+  .clippings .wrap { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .clippings ul { justify-content: flex-start; gap: 16px 34px; }
+}
+@media (max-width: 760px) {
+  .clippings ul { gap: 16px 26px; }
+  .clippings img { height: calc(var(--h) * .9); }
+}
 
 /* ---------- Section scaffolding ---------- */
 .section { padding: clamp(72px, 10vw, 140px) 0; }
