@@ -340,10 +340,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .dishes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px clamp(28px, 4vw, 56px); }
 .dish { padding: 12px 0; border-bottom: 1px dotted rgba(29,25,21,.18); }
 .dish[hidden] { display: none; }
-.dish-line { display: flex; align-items: baseline; gap: 10px; }
-.dish h4 { font: 500 19px/1.25 var(--f-display); }
-.dish .leader { flex: 1; border-bottom: 1px dotted rgba(29,25,21,.35); transform: translateY(-4px); min-width: 16px; }
-.dish .price { font: 500 16px/1 var(--f-body); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Dot leader: one dotted rule along the bottom of the row; the name and price sit on paper-coloured
+   backgrounds, so the dots only show from the end of the name's last line up to the price */
+.dish-line { position: relative; display: flex; align-items: flex-end; gap: 10px; }
+.dish-line::before { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; border-bottom: 1px dotted rgba(29,25,21,.35); }
+.dish h4 { position: relative; flex: 1; min-width: 0; font: 500 19px/1.25 var(--f-display); }
+.nowrap { white-space: nowrap; }
+.dish-name { background: var(--paper); padding-right: 8px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.dish .price { position: relative; background: var(--paper); padding-left: 8px; margin-left: -10px; font: 500 16px/1.4 var(--f-body); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .dish p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.45; margin-top: 3px; }
 .tag {
   display: inline-block; vertical-align: 2px; margin-left: 6px;
