@@ -423,9 +423,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: rgba(247,241,230,.35);
 }
 .key.is-down { transform: translateY(3px); box-shadow: inset 0 -2px 0 #ddd3c3, 0 1px 0 #0c0907; background: linear-gradient(180deg, #ffe9a8, #fff6d6); }
-/* Black keys stay pinned to the top edge (no gap showing the white key behind) and press by sinking at the front */
-.key.black { transition: height .06s, box-shadow .06s; }
-.key.black.is-down { transform: none; height: calc(62% + 3px); box-shadow: inset 0 -2px 0 #3a312b, 0 1px 0 #000; background: linear-gradient(180deg, #5a1d16, #2a0c08); }
+.key.black.is-down { box-shadow: inset 0 -2px 0 #3a312b, 0 1px 0 #000; background: linear-gradient(180deg, #5a1d16, #2a0c08); }
 .key-note { pointer-events: none; }
 
 @media (max-width: 900px) { .piano-grid { grid-template-columns: 1fr; } }
