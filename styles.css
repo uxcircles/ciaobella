@@ -386,6 +386,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .neon.flicker { animation: flicker 2.6s linear 1 both; }
 .neon .off { animation: flicker-letter 7s 3s infinite; }
+/* Animated opacity puts these on their own layer, which Safari crops to the element's box:
+   pad the box out far enough to hold the italic overhang and the 60px glow, and take the
+   same amount back with negative margins so the lettering doesn't move */
+.neon { padding: .4em .45em; margin: calc(20px - .4em) -.45em calc(26px - .4em); }
+.neon .off { display: inline-block; padding: .4em .45em; margin: -.4em -.45em; }
 @keyframes flicker {
   0%, 8%, 12%, 20%, 24% { opacity: .15; text-shadow: none; }
   10%, 22%, 30%, 100% { opacity: 1; }
