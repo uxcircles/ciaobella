@@ -359,7 +359,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 @media (max-width: 900px) {
   .menu-layout { grid-template-columns: 1fr; }
-  .menu-index { position: sticky; top: 116px; z-index: 5; background: var(--cloth-soft); margin: 0 calc(var(--gutter) * -1); padding: 12px var(--gutter); gap: 10px; box-shadow: 0 8px 16px -14px rgba(20,42,102,.5); }
+  .menu-index { position: sticky; top: 118px; z-index: 5; background: var(--cloth-soft); margin: 0 calc(var(--gutter) * -1); padding: 12px var(--gutter); gap: 10px; box-shadow: 0 8px 16px -14px rgba(20,42,102,.5); }
   .menu-index ol { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; }
   .menu-index ol::-webkit-scrollbar { display: none; }
   .menu-index a { font-size: 19px; white-space: nowrap; padding: 2px 0; }
@@ -621,7 +621,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 900px) { .cantina-hero-grid { grid-template-columns: 1fr; } .cantina-hero .frame { max-width: 440px; } }
 
 .wine-tools {
-  position: sticky; top: 112px; z-index: 10;
+  position: sticky; top: 118px; z-index: 10;
   background: rgba(247,241,230,.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-block: 1px solid var(--line);
 }
@@ -639,7 +639,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .wine-count { margin-left: auto; font-size: 13.5px; color: var(--ink-soft); }
 .region-select { font: inherit; font-size: 14px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
 @media (max-width: 760px) {
-  .wine-tools { top: 112px; }
+  .wine-tools { top: 118px; }
   .wine-tools .wrap { gap: 10px; }
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); width: calc(100% + var(--gutter) * 2); }
   .chips::-webkit-scrollbar { display: none; }
@@ -680,3 +680,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 /* 320px phones: the bottom bar already carries the call button */
 @media (max-width: 340px) { .awning-phone { display: none; } }
+
+/* Sticky bars sit just under the awning's scalloped valance; this 14px strip of their own
+   background reaches up behind the scallops so scrolling text can't show through the gaps */
+.wine-tools::before,
+.menu-index::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 15px;
+  background: inherit; pointer-events: none;
+}
+@media (min-width: 901px) { .menu-index::before { display: none; } }
