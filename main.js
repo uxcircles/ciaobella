@@ -204,6 +204,7 @@
 
     function apply() {
       var max = +price.value, region = regionSel.value, n = 0;
+      price.style.setProperty('--fill', ((max - price.min) / (price.max - price.min) * 100) + '%');
       priceOut.textContent = max >= +price.max ? (IT ? 'Qualsiasi prezzo' : 'Any price') : (IT ? 'Fino a £' : 'Up to £') + max;
       wines.forEach(function (w) {
         var ok = (style === 'all' || w.getAttribute('data-style') === style) && +w.getAttribute('data-price') <= max;

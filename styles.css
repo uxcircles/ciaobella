@@ -633,10 +633,30 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .chips button i { width: 9px; height: 9px; border-radius: 50%; }
 .chips button[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .price-filter { display: flex; align-items: center; gap: 12px; font-size: 14px; }
-.price-filter input { width: 180px; accent-color: var(--awning); }
+/* Budget slider drawn the same everywhere (iOS otherwise paints its own white knob) */
+.price-filter input {
+  -webkit-appearance: none; appearance: none; width: 180px; height: 24px; margin: 0;
+  background: transparent; cursor: pointer;
+}
+.price-filter input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--awning) var(--fill, 100%), rgba(29,25,21,.15) var(--fill, 100%)); }
+.price-filter input::-moz-range-track { height: 4px; border-radius: 4px; background: rgba(29,25,21,.15); }
+.price-filter input::-moz-range-progress { height: 4px; border-radius: 4px; background: var(--awning); }
+.price-filter input::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; margin-top: -8px; border-radius: 50%;
+  background: var(--gold); border: 3px solid var(--awning); box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.price-filter input::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--awning); box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.price-filter input:focus-visible { outline: 2px solid var(--awning); outline-offset: 4px; border-radius: 4px; }
 .price-filter output { font-weight: 600; min-width: 4.5em; font-variant-numeric: tabular-nums; }
 .wine-count { margin-left: auto; font-size: 13.5px; color: var(--ink-soft); }
-.region-select { font: inherit; font-size: 14px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
+.region-select {
+  -webkit-appearance: none; appearance: none;
+  font: 500 14px/1.2 var(--f-body); color: var(--ink);
+  padding: 9px 36px 9px 14px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235B524A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center / 12px 8px;
+  cursor: pointer;
+}
+.region-select:hover { border-color: rgba(29,25,21,.35); }
 @media (max-width: 760px) {
   .wine-tools { top: 118px; }
   .wine-tools .wrap { gap: 10px; }
