@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 60" width="330" height="60">
+  <defs>
+    <g id="z" fill="none" stroke-linejoin="miter" stroke-miterlimit="10">
+      <path d="M6 7H52L7 53H53"/>
+      <path d="M61 54L89 6L117 54M73 37H105"/>
+      <path d="M172 16A23 23 0 1 0 176 34H152"/>
+      <path d="M188 54L216 6L244 54M200 37H232"/>
+      <path d="M252 7H323M287.5 7V54"/>
+    </g>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="330" height="60">
+      <use href="#z" stroke="#fff" stroke-width="11"/>
+      <use href="#z" stroke="#000" stroke-width="3.6"/>
+    </mask>
+  </defs>
+  <rect width="330" height="60" fill="#000" mask="url(#m)"/>
+</svg>

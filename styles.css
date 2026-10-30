@@ -213,20 +213,34 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* ---------- Clippings ---------- */
-.clippings { border-block: 1px solid var(--line); background: var(--paper); }
-.clippings .wrap { display: flex; align-items: center; gap: 24px; padding-block: 18px; }
+.clippings { background: var(--paper); overflow: hidden; }
+.clippings .wrap { display: flex; align-items: center; gap: 32px; padding-block: 22px; }
 .clippings h2 { flex-shrink: 0; font: 600 11px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
-.clippings ul { flex: 1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 14px; }
-.clippings li { display: flex; align-items: center; }
+/* Marquee: two copies of the list slide left by exactly one copy, so the loop is seamless */
+.marquee {
+  flex: 1; min-width: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee ul { display: flex; align-items: center; gap: 64px; padding-right: 64px; }
+.marquee li { display: flex; align-items: center; flex-shrink: 0; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 /* every masthead in one ink colour, so the strip reads as a single line of clippings */
 .clippings img { height: var(--h); width: auto; max-width: none; filter: brightness(0); opacity: .78; transition: opacity .2s; }
 .clippings li:hover img { opacity: 1; }
-@media (max-width: 1200px) {
-  .clippings .wrap { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .clippings ul { justify-content: flex-start; gap: 16px 34px; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { width: auto; }
+  .marquee ul { flex-wrap: wrap; gap: 16px 40px; padding-right: 0; }
+  .marquee ul[aria-hidden] { display: none; }
 }
 @media (max-width: 760px) {
-  .clippings ul { gap: 16px 26px; }
+  .clippings .wrap { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .marquee { width: 100%; }
+  .marquee ul { gap: 44px; padding-right: 44px; }
+  .marquee-track { animation-duration: 30s; }
   .clippings img { height: calc(var(--h) * .9); }
 }
 
