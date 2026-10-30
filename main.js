@@ -21,8 +21,11 @@
     var days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
     return { day: days[o.weekday], mins: (+o.hour % 24) * 60 + +o.minute, date: o.year + '-' + o.month + '-' + o.day };
   }
+  var IT = document.documentElement.lang === 'it';
   function fmt(m) {
-    var h = Math.floor(m / 60), mm = m % 60, suffix = h >= 12 ? 'pm' : 'am';
+    var h = Math.floor(m / 60), mm = m % 60;
+    if (IT) return h + ':' + String(mm).padStart(2, '0');
+    var suffix = h >= 12 ? 'pm' : 'am';
     h = h % 12 || 12;
     return h + (mm ? '.' + String(mm).padStart(2, '0') : '') + suffix;
   }
@@ -39,14 +42,16 @@
     var text = status.querySelector('[data-status-text]');
     var h = HOURS[now.day];
     if (holiday) {
-      text.innerHTML = '<strong>Closed for Christmas</strong> · back on 4 January';
+      text.innerHTML = IT ? '<strong>Chiuso per le feste</strong> · riapriamo il 4 gennaio' : '<strong>Closed for Christmas</strong> · back on 4 January';
     } else if (now.mins >= h[0] && now.mins < h[1]) {
       status.setAttribute('data-state', 'open');
-      text.innerHTML = '<strong>Aperto</strong> · open now until ' + fmt(h[1]) + (now.mins >= 1140 ? ', piano playing' : '');
+      text.innerHTML = IT
+        ? '<strong>Aperto</strong> · fino alle ' + fmt(h[1]) + (now.mins >= 1140 ? ', il piano sta suonando' : '')
+        : '<strong>Aperto</strong> · open now until ' + fmt(h[1]) + (now.mins >= 1140 ? ', piano playing' : '');
     } else if (now.mins < h[0]) {
-      text.innerHTML = '<strong>Opens at ' + fmt(h[0]) + '</strong> today';
+      text.innerHTML = IT ? '<strong>Apre alle ' + fmt(h[0]) + '</strong> oggi' : '<strong>Opens at ' + fmt(h[0]) + '</strong> today';
     } else {
-      text.innerHTML = '<strong>Chiuso</strong> · opens tomorrow at ' + fmt(HOURS[(now.day + 1) % 7][0]);
+      text.innerHTML = '<strong>Chiuso</strong> · ' + (IT ? 'domani apre alle ' : 'opens tomorrow at ') + fmt(HOURS[(now.day + 1) % 7][0]);
     }
   }
 
@@ -199,7 +204,7 @@
 
     function apply() {
       var max = +price.value, region = regionSel.value, n = 0;
-      priceOut.textContent = max >= +price.max ? 'Any price' : 'Up to £' + max;
+      priceOut.textContent = max >= +price.max ? (IT ? 'Qualsiasi prezzo' : 'Any price') : (IT ? 'Fino a £' : 'Up to £') + max;
       wines.forEach(function (w) {
         var ok = (style === 'all' || w.getAttribute('data-style') === style) && +w.getAttribute('data-price') <= max;
         w.hidden = !ok;
@@ -210,7 +215,7 @@
         r.hidden = !ok;
         if (ok) n += visible;
       });
-      count.textContent = n + ' of ' + wines.length + ' wines';
+      count.textContent = IT ? n + ' di ' + wines.length + ' vini' : n + ' of ' + wines.length + ' wines';
       empty.classList.toggle('is-shown', n === 0);
     }
     styleBtns.forEach(function (b) {
