@@ -1,0 +1,66 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/our-menu",
+      "destination": "/#menu",
+      "permanent": true
+    },
+    {
+      "source": "/desserts",
+      "destination": "/#dolci",
+      "permanent": true
+    },
+    {
+      "source": "/drinks-menu",
+      "destination": "/#bar",
+      "permanent": true
+    },
+    {
+      "source": "/chefs-special",
+      "destination": "/#specials",
+      "permanent": true
+    },
+    {
+      "source": "/christmas-menu",
+      "destination": "/#occasions",
+      "permanent": true
+    },
+    {
+      "source": "/our-wines",
+      "destination": "/cantina",
+      "permanent": true
+    },
+    {
+      "source": "/events",
+      "destination": "/#occasions",
+      "permanent": true
+    },
+    {
+      "source": "/press",
+      "destination": "/#story",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/#gallery",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/#visit",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    }
+  ]
+}

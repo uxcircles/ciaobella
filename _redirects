@@ -1,0 +1,11 @@
+# Netlify / Cloudflare Pages: keep the old WordPress URLs working (Google results, bookmarks…)
+/our-menu        /#menu          301
+/desserts        /#dolci         301
+/drinks-menu     /#bar           301
+/chefs-special   /#specials      301
+/christmas-menu  /#occasions     301
+/our-wines       /cantina        301
+/events          /#occasions     301
+/press           /#story         301
+/gallery         /#gallery       301
+/contact-us      /#visit         301
