@@ -203,25 +203,24 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hero-wall .f2 { animation: hang 1s .25s both cubic-bezier(.2,.8,.2,1.2); }
 .hero-wall .f3 { animation: hang 1s .4s both cubic-bezier(.2,.8,.2,1.2); }
 @keyframes hang { from { opacity: 0; translate: 0 -24px; } }
+/* Round "dal 1983" stamp: an SVG so the lettering follows the ring instead of spilling past it */
 .stamp {
-  position: absolute; right: 6%; top: 0; z-index: 4;
+  position: absolute; right: 6%; top: 0; z-index: 4; margin: 0;
   width: 118px; height: 118px; border-radius: 50%;
-  display: grid; place-items: center; text-align: center;
-  background: var(--tomato); color: var(--cream);
-  font: italic 500 15px/1.05 var(--f-display);
   transform: rotate(10deg);
   box-shadow: 0 10px 24px -10px rgba(200,50,31,.7);
 }
-.stamp b { display: block; font: normal 600 34px/1 var(--f-display); letter-spacing: -.02em; }
-.stamp::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; border: 1px dashed rgba(247,241,230,.6); }
+.stamp svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.stamp .ring-text { font: 600 9.5px/1 var(--f-body); letter-spacing: .22em; fill: var(--cream); }
+.stamp .dal { font: italic 400 13px/1 var(--f-display); fill: var(--cream); }
+.stamp .year { font: 600 31px/1 var(--f-display); letter-spacing: -.02em; fill: var(--cream); }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-wall { max-width: 560px; width: 100%; margin: 0 auto; }
 }
 @media (max-width: 520px) {
-  .stamp { width: 92px; height: 92px; font-size: 12px; }
-  .stamp b { font-size: 26px; }
+  .stamp { width: 96px; height: 96px; }
   .frame { padding: 6px; }
 }
 

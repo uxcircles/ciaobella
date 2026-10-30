@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400..700&family=Caveat:wght@500..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -104,7 +104,19 @@
         <figure class="frame f1"><img src="assets/img/room-stars-640.webp" srcset="assets/img/room-stars-640.webp 640w, assets/img/room-stars-lg.webp 1000w" sizes="(max-width: 900px) 74vw, 36vw" width="1000" height="605" alt="The dining room, with black-and-white photos of Italian film stars covering the walls" fetchpriority="high"></figure>
         <figure class="frame gilt f2"><img src="assets/img/neon-640.webp" srcset="assets/img/neon-640.webp 640w, assets/img/neon-lg.webp 1000w" sizes="(max-width: 900px) 52vw, 26vw" width="1000" height="669" alt="The front window with its red neon sign: Pizza Pasta Piano Bar" loading="lazy" decoding="async"></figure>
         <figure class="frame f3"><img src="assets/img/pizza-640.webp" srcset="assets/img/pizza-640.webp 640w, assets/img/pizza-lg.webp 1000w" sizes="(max-width: 900px) 38vw, 18vw" width="1000" height="750" alt="A Quattro Stagioni pizza" loading="lazy" decoding="async"></figure>
-        <p class="stamp">dal<b>1983</b>Bloomsbury</p>
+        <figure class="stamp" aria-label="Since 1983, Bloomsbury, London">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="60" fill="#C8321F"/>
+            <circle cx="60" cy="60" r="54.5" fill="none" stroke="rgba(247,241,230,.6)" stroke-width="1" stroke-dasharray="3 3"/>
+            <path id="stamp-top" d="M18 60A42 42 0 0 1 102 60" fill="none"/>
+            <path id="stamp-bottom" d="M10.5 60A49.5 49.5 0 0 0 109.5 60" fill="none"/>
+            <text class="ring-text"><textPath href="#stamp-top" startOffset="50%" text-anchor="middle">BLOOMSBURY</textPath></text>
+            <text class="ring-text"><textPath href="#stamp-bottom" startOffset="50%" text-anchor="middle">LONDON</textPath></text>
+            <circle cx="14" cy="60" r="1.6" fill="#F7F1E6"/><circle cx="106" cy="60" r="1.6" fill="#F7F1E6"/>
+            <text class="dal" x="60" y="50" text-anchor="middle">dal</text>
+            <text class="year" x="60" y="78" text-anchor="middle">1983</text>
+          </svg>
+        </figure>
       </div>
     </div>
   </section>
@@ -413,6 +425,6 @@
   <a class="btn btn-awning" href="tel:+442072424119"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call to book</a>
   <a class="btn btn-ghost" href="index.html#menu">Menu</a>
 </div>
-<script src="main.js?v=4" defer></script>
+<script src="main.js?v=8" defer></script>
 </body>
 </html>
