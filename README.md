@@ -64,17 +64,14 @@ python3 -m http.server 5173
 | 營業時間 | `main.js` 的 `HOURS` 和 `CLOSED`（聖誕休假），**以及** 兩個 `index.html` 的營業時間表與 JSON-LD（義大利文版用 24 小時制） |
 | 改了 CSS／JS | 把四個頁面的 `styles.css?v=…`、`main.js?v=…` 版本號 +1 |
 
-## 上線前待確認
+## 內部筆記
 
-內容取自官網（2026-10-30 抓取），已修正明顯錯字（Garlic Bred、Sward Fish、Leak、DOSG→DOCG、Bolghieri、Iripina 等）。
+原網站檢視結果、待店家確認事項和 pitch 資料放在本機的 `.private/`（已被 `.gitignore` 排除，不會進 git）。
 
-還需要店家確認：
-- [ ] **營業時間不一致**：首頁寫週三至週六到 10.15pm，Contact 頁寫到 10.30pm。網站目前用 10.15pm。
-- [ ] 酒單年份可疑：Cannonau「20121」、Langhe Nebbiolo「20221」（目前改成 2021），Brunello Tenuta Nuova 2015 同時出現 £260 兩次（已合併）、Chianti Classico Borgo Salcetino 有 £35 和 £54.50 兩個價格（目前用 £35）。
-- [ ] 11% 服務費只在聖誕菜單頁看到，平常菜單是否也收？
-- [ ] 聖誕休假：最後營業 2026/12/23，2027/1/4 重新開門（來自官網公告圖）。
-- [ ] 義大利文版請母語人士再順一次（菜名本來就是義大利文，主要是說明文字和菜色描述）。
-- [ ] 鋼琴吧介紹裡的曲目（Dean Martin、Modugno、Paolo Conte）是示意文案，請換成鋼琴師實際常彈的。
-- [ ] 照片多是 2014–2016 年拍的，解析度只有 1000px 左右；若正式採用，建議重拍菜色與店內（尤其是遮陽棚和霓虹燈）。
-- [ ] 媒體報導清單取自官網 Press 頁的剪報檔名。logo 取自各刊物官網／Wikipedia，網站上統一轉成單色並做成跑馬燈（滑鼠移上去會暫停；系統開啟「減少動態效果」時改成靜態排列）。Zagat 和 Business Traveller 是依官方 logo 重繪的向量檔（Business Traveller 用相近的 Archivo 字體轉外框），若店家能取得官方原檔，可直接覆蓋 `assets/press/` 裡同名檔案。Londra Sera 找不到 logo，先拿掉。
-- [ ] 刊物 logo 是各家商標，用在「曾報導」區塊屬一般用法，正式上線前請店家確認報導屬實。
+第一次 clone 後啟用 git hooks：
+
+```
+git config core.hooksPath .githooks
+```
+
+之後每次 commit / push 會擋下 `.private/` 的檔案和 `.private/blocklist.txt` 裡的敏感字詞，並列出 `.private/NOTES.md` 裡未完成的待辦。隨時查看：`sh .githooks/remind.sh`
