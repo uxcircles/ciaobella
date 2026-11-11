@@ -24,6 +24,7 @@
   --f-chalk: "Caveat", "Bradley Hand", cursive;
 
   --bar-h: 36px;
+  --stick-top: 82px; /* awning (68px) + scalloped valance (14px): where sticky bars sit once the concept bar has scrolled away */
   --wrap: 1240px;
   --gutter: clamp(16px, 4vw, 40px);
   --radius: 4px;
@@ -359,7 +360,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 @media (max-width: 900px) {
   .menu-layout { grid-template-columns: 1fr; }
-  .menu-index { position: sticky; top: 118px; z-index: 5; background: var(--cloth-soft); margin: 0 calc(var(--gutter) * -1); padding: 12px var(--gutter); gap: 10px; box-shadow: 0 8px 16px -14px rgba(20,42,102,.5); }
+  .menu-index { position: sticky; top: var(--stick-top); z-index: 5; background: var(--cloth-soft); margin: 0 calc(var(--gutter) * -1); padding: 12px var(--gutter); gap: 10px; box-shadow: 0 8px 16px -14px rgba(20,42,102,.5); }
   .menu-index ol { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; }
   .menu-index ol::-webkit-scrollbar { display: none; }
   .menu-index a { font-size: 19px; white-space: nowrap; padding: 2px 0; }
@@ -624,7 +625,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 900px) { .cantina-hero-grid { grid-template-columns: 1fr; } .cantina-hero .frame { max-width: 440px; } }
 
 .wine-tools {
-  position: sticky; top: 118px; z-index: 10;
+  position: sticky; top: var(--stick-top); z-index: 10;
   background: rgba(247,241,230,.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-block: 1px solid var(--line);
 }
@@ -662,7 +663,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .region-select:hover { border-color: rgba(29,25,21,.35); }
 @media (max-width: 760px) {
-  .wine-tools { top: 118px; }
+  .wine-tools { top: var(--stick-top); }
   .wine-tools .wrap { gap: 10px; }
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); width: calc(100% + var(--gutter) * 2); }
   .chips::-webkit-scrollbar { display: none; }
