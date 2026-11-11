@@ -21,7 +21,7 @@
 | 100 多款酒 | 「酒架」：每支瓶子代表一個產區，高度＝款數，點了直接跳到酒單該產區 |
 | 聖誕套餐 | 一張紅色票券 |
 
-字體：Bodoni Moda（Bodoni 本來就是義大利字體）＋ Instrument Sans；黑板用 Caveat。
+字體：Libre Bodoni（Bodoni 本來就是義大利字體；這個版本為螢幕設計，細線較粗，比 Bodoni Moda 好讀）＋ Instrument Sans；黑板用 Caveat。
 
 ## 檔案結構
 
