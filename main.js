@@ -235,3 +235,41 @@
     apply();
   }
 })();
+
+/* ---------- Live map (MapLibre + OpenFreeMap), loaded only when it nears the screen ----------
+   The sketch SVG stays underneath and remains if anything fails to load. */
+(function () {
+  var box = document.querySelector('[data-map]');
+  var dataEl = document.getElementById('map-data');
+  if (!box || !dataEl || !('IntersectionObserver' in window)) return;
+
+  function addScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src; s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  function start() {
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = box.dataset.lib + 'maplibre-gl.css';
+    document.head.appendChild(css);
+    addScript(box.dataset.lib + 'maplibre-gl.js')
+      .then(function () { return addScript(box.dataset.src); })
+      .then(function () {
+        var live = document.createElement('div');
+        live.className = 'map-live';
+        box.appendChild(live);
+        var map = window.ciaoBellaMap(live, JSON.parse(dataEl.textContent));
+        map.once('load', function () { box.classList.add('is-live'); });
+      })
+      .catch(function () { /* keep the sketch map */ });
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); }
+  }, { rootMargin: '400px 0px' });
+  io.observe(box);
+})();

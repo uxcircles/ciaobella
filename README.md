@@ -75,3 +75,7 @@ git config core.hooksPath .githooks
 ```
 
 之後每次 commit / push 會擋下 `.private/` 的檔案和 `.private/blocklist.txt` 裡的敏感字詞，並列出 `.private/NOTES.md` 裡未完成的待辦。隨時查看：`sh .githooks/remind.sh`
+
+## 地圖
+
+「Come trovarci」的地圖用 MapLibre GL JS 4.7.1（BSD 授權，放在 `assets/vendor/maplibre/`）加 OpenFreeMap 的 OpenStreetMap 向量圖磚，顏色在 `assets/map.js` 開頭的 `C` 物件（奶油底、桌布藍、遮陽棚寶藍與金色）。地圖捲到附近才載入；載入失敗時保留原本的手繪 SVG。位置、The Lamb、兩個地鐵站與步行路線都在頁面裡的 `#map-data` JSON；步行路線取自 OSRM（routing.openstreetmap.de 步行模式）：Russell Square 504 m 約 6 分鐘、Holborn 831 m 約 10 分鐘。
