@@ -160,7 +160,7 @@
     // The Lamb sits two doors along: below-left of the pin, or below-right on phones where Russell Square's name is
     new maplibregl.Marker({ element: el('div', 'map-pub' + (narrow ? ' pub-right' : ''), '<span class="pub-name">' + data.pub.name + '</span><span class="pub-dot"></span>'), anchor: narrow ? 'left' : 'right', offset: narrow ? [12, 30] : [-6, 30] })
       .setLngLat([data.pub.lng, data.pub.lat]).addTo(map);
-    new maplibregl.Marker({ element: el('div', 'map-home', '<span class="pin">CB</span><span class="pin-label">Ciao Bella<small>' + data.home.note + '</small></span>'), anchor: 'left', offset: [-22, 0] })
+    new maplibregl.Marker({ element: el('div', 'map-home', '<span class="pin"><img src="' + data.home.logo + '" alt="" width="46" height="46"></span><span class="pin-label">Ciao Bella<small>' + data.home.note + '</small></span>'), anchor: 'left', offset: [-23, 0] }) // 46px logo pin centred on the restaurant
       .setLngLat(home).addTo(map);
 
     // frame the restaurant and both stations; refit when the box changes size, until someone moves the map
